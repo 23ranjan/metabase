@@ -1,29 +1,42 @@
 /* @flow */
 
 import React, { Component } from "react";
-import PropTypes from "prop-types";
+import cx from "classnames";
+import moment from "moment";
+import _ from "underscore";
 
 import SpecificDatePicker from "./SpecificDatePicker";
 import RelativeDatePicker, { DATE_PERIODS, UnitPicker } from "./RelativeDatePicker";
 import DateOperatorSelector from "../DateOperatorSelector";
 import Calendar from "metabase/components/Calendar";
 
-import moment from "moment";
-
 import Query from "metabase/lib/query";
 import { mbqlEq } from "metabase/lib/query/util";
-import cx from "classnames";
-
-import _ from "underscore";
 
 import type {
-    FieldFilter, TimeIntervalFilter,
+    FieldFilter,
+    TimeIntervalFilter,
     DatetimeUnit,
     ConcreteField,
-    LocalFieldReference, ForeignFieldReference, ExpressionReference
+    LocalFieldReference,
+    ForeignFieldReference,
+    ExpressionReference
 } from "metabase/meta/types/Query";
 
-const SingleDatePicker = ({ filter: [op, field, value], onFilterChange, hideTimeSelectors }) =>
+type CurrentPickerProps = {
+    filter: TimeIntervalFilter,
+    onFilterChange: (filter: TimeIntervalFilter) => void
+};
+
+type CurrentPickerState = {
+    showUnits: boolean
+};
+
+const SingleDatePicker = ({
+    filter: [op, field, value],
+    onFilterChange,
+    hideTimeSelectors
+}) =>
     <div className="mx2">
         <SpecificDatePicker
             value={value}
@@ -33,7 +46,11 @@ const SingleDatePicker = ({ filter: [op, field, value], onFilterChange, hideTime
         />
     </div>
 
-const MultiDatePicker = ({ filter: [op, field, startValue, endValue], onFilterChange , hideTimeSelectors}) =>
+const MultiDatePicker = ({
+    filter: [op, field, startValue, endValue],
+    onFilterChange ,
+    hideTimeSelectors
+}) =>
     <div className="mx2 mb1">
         <div className="Grid Grid--1of2 Grid--gutters">
             <div className="Grid-cell">
@@ -68,14 +85,6 @@ const PreviousPicker =  (props) =>
 const NextPicker = (props) =>
     <RelativeDatePicker {...props} />
 
-type CurrentPickerProps = {
-    filter: TimeIntervalFilter,
-    onFilterChange: (filter: TimeIntervalFilter) => void
-};
-
-type CurrentPickerState = {
-    showUnits: boolean
-};
 
 class CurrentPicker extends Component {
     props: CurrentPickerProps;
@@ -246,14 +255,6 @@ export default class DatePicker extends Component {
         operators: []
     };
 
-    static propTypes = {
-        filter: PropTypes.array.isRequired,
-        onFilterChange: PropTypes.func.isRequired,
-        className: PropTypes.string,
-        hideEmptinessOperators: PropTypes.bool,
-        hideTimeSelectors: PropTypes.bool
-    };
-
     componentWillMount() {
         const operators = this.props.hideEmptinessOperators ? DATE_OPERATORS : ALL_OPERATORS;
 
@@ -268,7 +269,7 @@ export default class DatePicker extends Component {
     }
 
     render() {
-        let { filter, onFilterChange, className, includeAllTime } = this.props;
+        const { filter, onFilterChange, className, includeAllTime } = this.props;
         let { operators } = this.state;
         if (includeAllTime) {
             operators = [ALL_TIME_OPERATOR, ...operators];
@@ -278,7 +279,7 @@ export default class DatePicker extends Component {
         const Widget = operator && operator.widget;
 
         return (
-            <div className={cx("pt2", className)}>
+            <div className={cx("p2 flex align-center", className)}>
                 <DateOperatorSelector
                     operator={operator && operator.name}
                     operators={operators}

@@ -60,7 +60,7 @@ export default class RelativeDatePicker extends Component {
     render() {
         const { filter: [op, field, intervals, unit], onFilterChange, formatter } = this.props;
         return (
-            <div className="px2">
+            <div className="flex align-center">
                 <NumericInput
                     className="input h3 mb2 border-purple"
                     data-ui-tag="relative-date-input"
