@@ -129,30 +129,30 @@ export default class LoginApp extends Component {
 
                             <FormMessage formError={loginError && loginError.data.message ? loginError : null} ></FormMessage>
 
-                            <FormField key="username" fieldName="username" formError={loginError}>
-                                <FormLabel title={Settings.ldapEnabled() ? "Username or email address" : "Email address"} fieldName={"username"} formError={loginError} />
-                                <input className="Form-input Form-offset full py1" name="username" placeholder="youlooknicetoday@email.com" type="text" onChange={(e) => this.onChange("username", e.target.value)} autoFocus />
-                                <span className="Form-charm"></span>
-                            </FormField>
+                        //     <FormField key="username" fieldName="username" formError={loginError}>
+                        //         <FormLabel title={Settings.ldapEnabled() ? "Username or email address" : "Email address"} fieldName={"username"} formError={loginError} />
+                        //         <input className="Form-input Form-offset full py1" name="username" placeholder="youlooknicetoday@email.com" type="text" onChange={(e) => this.onChange("username", e.target.value)} autoFocus />
+                        //         <span className="Form-charm"></span>
+                        //     </FormField>
 
-                            <FormField key="password" fieldName="password" formError={loginError}>
-                                <FormLabel title={"Password"}  fieldName={"password"} formError={loginError} />
-                                <input className="Form-input Form-offset full py1" name="password" placeholder="Shh..." type="password" onChange={(e) => this.onChange("password", e.target.value)} />
-                                <span className="Form-charm"></span>
-                            </FormField>
+                        //     <FormField key="password" fieldName="password" formError={loginError}>
+                        //         <FormLabel title={"Password"}  fieldName={"password"} formError={loginError} />
+                        //         <input className="Form-input Form-offset full py1" name="password" placeholder="Shh..." type="password" onChange={(e) => this.onChange("password", e.target.value)} />
+                        //         <span className="Form-charm"></span>
+                        //     </FormField>
 
-                            <div className="Form-field">
-                                <ul className="Form-offset">
-                                    <input name="remember" type="checkbox" defaultChecked /> <label className="inline-block">Remember Me:</label>
-                                </ul>
-                            </div>
+                        //     <div className="Form-field">
+                        //         <ul className="Form-offset">
+                        //             <input name="remember" type="checkbox" defaultChecked /> <label className="inline-block">Remember Me:</label>
+                        //         </ul>
+                        //     </div>
 
-                            <div className="Form-actions p2 Grid Grid--full md-Grid--1of2">
-                                <button className={cx("Button Grid-cell", {'Button--primary': this.state.valid})} disabled={!this.state.valid}>
-                                    Sign in
-                                </button>
-                                <Link to={"/auth/forgot_password"+(Utils.validEmail(this.state.credentials.username) ? "?email="+this.state.credentials.username : "")} className="Grid-cell py2 sm-py0 text-grey-3 md-text-right text-centered flex-full link" onClick={(e) => { window.OSX ? window.OSX.resetPassword() : null }}>I seem to have forgotten my password</Link>
-                            </div>
+                        //     <div className="Form-actions p2 Grid Grid--full md-Grid--1of2">
+                        //         <button className={cx("Button Grid-cell", {'Button--primary': this.state.valid})} disabled={!this.state.valid}>
+                        //             Sign in
+                        //         </button>
+                        //         <Link to={"/auth/forgot_password"+(Utils.validEmail(this.state.credentials.username) ? "?email="+this.state.credentials.username : "")} className="Grid-cell py2 sm-py0 text-grey-3 md-text-right text-centered flex-full link" onClick={(e) => { window.OSX ? window.OSX.resetPassword() : null }}>I seem to have forgotten my password</Link>
+                        //     </div>
                         </form>
                     </div>
                 </div>
