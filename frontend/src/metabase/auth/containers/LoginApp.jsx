@@ -114,20 +114,20 @@ export default class LoginApp extends Component {
                         <LogoIcon className="Logo my4 sm-my0" width={66} height={85} />
                     </div>
                     <div className="Login-content Grid-cell">
-                        // <form className="Form-new bg-white bordered rounded shadowed" name="form" onSubmit={(e) => this.formSubmitted(e)} noValidate>
-                        //     <h3 className="Login-header Form-offset">Sign in to Metabase</h3>
+                        <form className="Form-new bg-white bordered rounded shadowed" name="form" onSubmit={(e) => this.formSubmitted(e)} noValidate>
+                            <h3 className="Login-header Form-offset">Sign in to Metabase</h3>
 
-                        //     { Settings.ssoEnabled() &&
-                        //         <div className="mx4 mb4 py3 border-bottom relative">
-                        //             <SSOLoginButton provider='google' ref="ssoLoginButton"/>
-                        //             {/*<div className="g-signin2 ml1 relative z2" id="g-signin2"></div>*/}
-                        //             <div className="mx1 absolute text-centered left right" style={{ bottom: -8 }}>
-                        //                 <span className="text-bold px3 py2 text-grey-3 bg-white">OR</span>
-                        //             </div>
-                        //         </div>
-                        //     }
+                            { Settings.ssoEnabled() &&
+                                <div className="mx4 mb4 py3 border-bottom relative">
+                                    <SSOLoginButton provider='google' ref="ssoLoginButton"/>
+                                    {/*<div className="g-signin2 ml1 relative z2" id="g-signin2"></div>*/}
+                                    <div className="mx1 absolute text-centered left right" style={{ bottom: -8 }}>
+                                        <span className="text-bold px3 py2 text-grey-3 bg-white">OR</span>
+                                    </div>
+                                </div>
+                            }
 
-                        //     <FormMessage formError={loginError && loginError.data.message ? loginError : null} ></FormMessage>
+                            <FormMessage formError={loginError && loginError.data.message ? loginError : null} ></FormMessage>
 
                         //     <FormField key="username" fieldName="username" formError={loginError}>
                         //         <FormLabel title={Settings.ldapEnabled() ? "Username or email address" : "Email address"} fieldName={"username"} formError={loginError} />
@@ -153,7 +153,7 @@ export default class LoginApp extends Component {
                         //         </button>
                         //         <Link to={"/auth/forgot_password"+(Utils.validEmail(this.state.credentials.username) ? "?email="+this.state.credentials.username : "")} className="Grid-cell py2 sm-py0 text-grey-3 md-text-right text-centered flex-full link" onClick={(e) => { window.OSX ? window.OSX.resetPassword() : null }}>I seem to have forgotten my password</Link>
                         //     </div>
-                        // </form>
+                        </form>
                     </div>
                 </div>
                 <AuthScene />
